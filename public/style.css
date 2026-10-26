@@ -62,3 +62,9 @@ footer{text-align:center;padding:2rem;color:var(--muted);border-top:1px solid #1
 #chatForm input{flex:1;padding:.8rem;background:transparent;border:none;color:var(--text)}
 #chatForm button{padding:0 1rem;border:none;background:var(--accent);font-weight:700;cursor:pointer}
 @media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center}.countdown{justify-content:center}.nav nav a:not(.btn-sm){display:none}.scooter{font-size:8rem}.chat{width:calc(100% - 48px)}}
+.scooter{width:min(560px,92%);height:auto;font-size:0;filter:drop-shadow(0 25px 45px rgba(0,229,160,.35))}
+.rider{width:70px;height:auto;top:-.4rem;font-size:0}
+@media(max-width:800px){.scooter{width:90%}}
+.scooter{width:min(560px,92%);height:auto;font-size:0;filter:drop-shadow(0 25px 45px rgba(0,229,160,.35))}
+.rider{width:70px;height:auto;top:-.4rem;font-size:0}
+@media(max-width:800px){.scooter{width:90%}}
