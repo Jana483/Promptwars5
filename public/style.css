@@ -78,3 +78,5 @@ footer{text-align:center;padding:2rem;color:var(--muted);border-top:1px solid #1
 @keyframes blink{50%{opacity:.3}}
 @media(max-width:800px){.reveal-caption{position:static;transform:none;margin:1rem auto 0;width:auto;font-size:.85rem;text-align:left}
   .hero-visual{flex-direction:column;height:auto}}
+.scooter-emoji{font-size:12rem;animation:float 3s ease-in-out infinite}
+.hero-visual{min-height:420px}

@@ -1,85 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
   <defs>
-    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#00e5a0"/><stop offset="1" stop-color="#00b3ff"/>
-    </linearGradient>
-    <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1c2640"/><stop offset="1" stop-color="#0a0f1c"/>
-    </linearGradient>
-    <radialGradient id="rim" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#cfd8e6"/><stop offset="0.7" stop-color="#6b7a93"/><stop offset="1" stop-color="#2a3550"/>
-    </radialGradient>
-    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#e8fbff" stop-opacity="0.55"/><stop offset="1" stop-color="#e8fbff" stop-opacity="0"/>
-    </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00e5a0"/><stop offset="1" stop-color="#00b3ff"/></linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2640"/><stop offset="1" stop-color="#0a0f1c"/></linearGradient>
+    <radialGradient id="rim" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#cfd8e6"/><stop offset="0.7" stop-color="#6b7a93"/><stop offset="1" stop-color="#2a3550"/></radialGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8fbff" stop-opacity="0.55"/><stop offset="1" stop-color="#e8fbff" stop-opacity="0"/></linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
   </defs>
-
-  <!-- ground shadow -->
   <ellipse cx="320" cy="388" rx="250" ry="14" fill="#000" opacity="0.45"/>
-
-  <!-- headlight beam -->
   <polygon points="515,135 640,100 640,190" fill="url(#beam)"/>
-
-  <!-- wheels (airless spoke tyres) -->
-  <g>
-    <circle cx="150" cy="320" r="62" fill="#0b0f18" stroke="#2a3550" stroke-width="10"/>
-    <circle cx="150" cy="320" r="40" fill="url(#rim)"/>
-    <g stroke="#0b0f18" stroke-width="5">
-      <line x1="150" y1="282" x2="150" y2="358"/><line x1="112" y1="320" x2="188" y2="320"/>
-      <line x1="123" y1="293" x2="177" y2="347"/><line x1="177" y1="293" x2="123" y2="347"/>
-    </g>
-    <circle cx="150" cy="320" r="12" fill="#00e5a0" filter="url(#glow)"/>
-  </g>
-  <g>
-    <circle cx="500" cy="320" r="62" fill="#0b0f18" stroke="#2a3550" stroke-width="10"/>
-    <circle cx="500" cy="320" r="40" fill="url(#rim)"/>
-    <g stroke="#0b0f18" stroke-width="5">
-      <line x1="500" y1="282" x2="500" y2="358"/><line x1="462" y1="320" x2="538" y2="320"/>
-      <line x1="473" y1="293" x2="527" y2="347"/><line x1="527" y1="293" x2="473" y2="347"/>
-    </g>
-    <circle cx="500" cy="320" r="12" fill="#00b3ff" filter="url(#glow)"/>
-  </g>
-
-  <!-- fenders -->
+  <g><circle cx="150" cy="320" r="62" fill="#0b0f18" stroke="#2a3550" stroke-width="10"/><circle cx="150" cy="320" r="40" fill="url(#rim)"/>
+    <g stroke="#0b0f18" stroke-width="5"><line x1="150" y1="282" x2="150" y2="358"/><line x1="112" y1="320" x2="188" y2="320"/><line x1="123" y1="293" x2="177" y2="347"/><line x1="177" y1="293" x2="123" y2="347"/></g>
+    <circle cx="150" cy="320" r="12" fill="#00e5a0" filter="url(#glow)"/></g>
+  <g><circle cx="500" cy="320" r="62" fill="#0b0f18" stroke="#2a3550" stroke-width="10"/><circle cx="500" cy="320" r="40" fill="url(#rim)"/>
+    <g stroke="#0b0f18" stroke-width="5"><line x1="500" y1="282" x2="500" y2="358"/><line x1="462" y1="320" x2="538" y2="320"/><line x1="473" y1="293" x2="527" y2="347"/><line x1="527" y1="293" x2="473" y2="347"/></g>
+    <circle cx="500" cy="320" r="12" fill="#00b3ff" filter="url(#glow)"/></g>
   <path d="M82 300 A70 70 0 0 1 218 290" fill="none" stroke="url(#body)" stroke-width="10" stroke-linecap="round"/>
   <path d="M432 300 A70 70 0 0 1 568 300" fill="none" stroke="url(#body)" stroke-width="10" stroke-linecap="round"/>
-
-  <!-- front fork -->
   <line x1="490" y1="150" x2="500" y2="320" stroke="#8a97ad" stroke-width="10" stroke-linecap="round"/>
-
-  <!-- floor deck -->
   <rect x="270" y="280" width="185" height="20" rx="8" fill="url(#dark)" stroke="#2a3550" stroke-width="2"/>
-
-  <!-- rear body -->
   <path d="M90 292 C88 232 138 205 220 205 L362 205 C384 205 394 222 388 244 L372 292 Z" fill="url(#body)"/>
-  <path d="M120 250 C150 228 250 226 360 228" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
-  <!-- tail light -->
+  <path d="M120 250 C150 228 250 226 360 228" fill="none" stroke="#fff" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round"/>
   <rect x="84" y="238" width="14" height="30" rx="5" fill="#ff3b5c" filter="url(#glow)"/>
-  <!-- logo -->
   <polygon points="240,240 222,268 236,268 228,288 254,256 240,256 248,240" fill="#0a0f1c" opacity="0.85"/>
   <text x="270" y="275" font-family="Segoe UI,Arial,sans-serif" font-weight="800" font-size="26" fill="#0a0f1c" opacity="0.85">X1</text>
-
-  <!-- seat -->
   <path d="M150 207 C150 182 176 172 212 172 L332 172 C354 172 364 186 358 207 Z" fill="url(#dark)" stroke="#2a3550" stroke-width="2"/>
-
-  <!-- front leg shield / column -->
   <path d="M428 296 C440 232 454 172 468 108 L502 106 C508 160 502 232 522 300 Z" fill="url(#body)"/>
-  <path d="M448 280 C456 220 466 170 476 120" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round"/>
-
-  <!-- headlight -->
+  <path d="M448 280 C456 220 466 170 476 120" fill="none" stroke="#fff" stroke-opacity="0.5" stroke-width="4" stroke-linecap="round"/>
   <ellipse cx="507" cy="140" rx="11" ry="20" fill="#e8fbff" filter="url(#glow)"/>
-
-  <!-- handlebar -->
   <line x1="484" y1="110" x2="472" y2="62" stroke="#2a3550" stroke-width="10" stroke-linecap="round"/>
   <line x1="438" y1="62" x2="522" y2="56" stroke="#0d1426" stroke-width="12" stroke-linecap="round"/>
   <line x1="438" y1="62" x2="456" y2="61" stroke="#00e5a0" stroke-width="12" stroke-linecap="round"/>
   <line x1="504" y1="57" x2="522" y2="56" stroke="#00e5a0" stroke-width="12" stroke-linecap="round"/>
-  <!-- mirror -->
   <line x1="450" y1="60" x2="440" y2="34" stroke="#2a3550" stroke-width="4"/>
   <ellipse cx="438" cy="28" rx="12" ry="8" fill="#1c2640" stroke="#00b3ff" stroke-width="2"/>
-  <!-- dash display -->
   <rect x="462" y="72" width="30" height="14" rx="3" fill="#0a0f1c" stroke="#00e5a0" stroke-width="2"/>
 </svg>
