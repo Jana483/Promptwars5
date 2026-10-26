@@ -80,3 +80,37 @@ footer{text-align:center;padding:2rem;color:var(--muted);border-top:1px solid #1
   .hero-visual{flex-direction:column;height:auto}}
 .scooter-emoji{font-size:12rem;animation:float 3s ease-in-out infinite}
 .hero-visual{min-height:420px}
+
+/* ---- Chat close / reopen ---- */
+.chat-closable { position: relative; }
+.chat-hidden { display: none !important; }
+.chat-close {
+  position: absolute; top: 8px; right: 10px;
+  background: transparent; border: none; color: inherit;
+  font-size: 26px; line-height: 1; cursor: pointer; opacity: .7;
+}
+.chat-close:hover { opacity: 1; }
+.chat-open {
+  display: none; position: fixed; right: 20px; bottom: 20px; z-index: 9999;
+  padding: 12px 18px; border: none; border-radius: 999px; cursor: pointer;
+  background: #00c2a8; color: #fff; font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+}
+.chat-open:hover { filter: brightness(1.1); }
+
+/* ---- Chat close / reopen ---- */
+.chat-closable { position: relative; }
+.chat-hidden { display: none !important; }
+.chat-close {
+  position: absolute; top: 8px; right: 10px;
+  background: transparent; border: none; color: inherit;
+  font-size: 26px; line-height: 1; cursor: pointer; opacity: .7;
+}
+.chat-close:hover { opacity: 1; }
+.chat-open {
+  display: none; position: fixed; right: 20px; bottom: 20px; z-index: 9999;
+  padding: 12px 18px; border: none; border-radius: 999px; cursor: pointer;
+  background: #00c2a8; color: #fff; font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0,0,0,.3);
+}
+.chat-open:hover { filter: brightness(1.1); }

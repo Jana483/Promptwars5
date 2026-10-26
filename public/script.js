@@ -69,3 +69,40 @@ document.getElementById("chatForm").addEventListener("submit", async e => {
   } catch { bot.textContent = "Sorry, try again."; }
   log.scrollTop = log.scrollHeight;
 });
+
+// ---- Close / reopen chat popup ----
+(function () {
+  const SELECTOR = '#chat, .chat, .chat-box, .chat-widget, [id*="chat"], [class*="chat"]';
+  const panel = document.querySelector(SELECTOR);
+  if (!panel) return;
+
+  panel.classList.add('chat-closable');
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'chat-close';
+  closeBtn.setAttribute('aria-label', 'Close chat');
+  closeBtn.innerHTML = '&times;';
+  panel.appendChild(closeBtn);
+
+  const openBtn = document.createElement('button');
+  openBtn.className = 'chat-open';
+  openBtn.textContent = 'Chat with us';
+  document.body.appendChild(openBtn);
+
+  function closeChat() {
+    panel.classList.add('chat-hidden');
+    openBtn.style.display = 'block';
+    sessionStorage.setItem('chatClosed', '1');
+  }
+  function openChat() {
+    panel.classList.remove('chat-hidden');
+    openBtn.style.display = 'none';
+    sessionStorage.removeItem('chatClosed');
+  }
+
+  closeBtn.addEventListener('click', closeChat);
+  openBtn.addEventListener('click', openChat);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeChat(); });
+
+  sessionStorage.getItem('chatClosed') ? closeChat() : openChat();
+})();
