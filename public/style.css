@@ -68,3 +68,13 @@ footer{text-align:center;padding:2rem;color:var(--muted);border-top:1px solid #1
 .scooter{width:min(560px,92%);height:auto;font-size:0;filter:drop-shadow(0 25px 45px rgba(0,229,160,.35))}
 .rider{width:70px;height:auto;top:-.4rem;font-size:0}
 @media(max-width:800px){.scooter{width:90%}}
+.reveal-caption{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:max-content;max-width:95%;
+  display:flex;align-items:center;gap:.6rem;padding:.6rem 1.2rem;border-radius:50px;
+  background:rgba(18,26,46,.85);border:1px solid rgba(0,229,160,.45);color:var(--text);
+  font-size:.95rem;font-weight:600;letter-spacing:.3px;backdrop-filter:blur(6px);
+  box-shadow:0 0 25px rgba(0,229,160,.2)}
+.reveal-caption .dot{width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;
+  box-shadow:0 0 10px var(--accent);animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.3}}
+@media(max-width:800px){.reveal-caption{position:static;transform:none;margin:1rem auto 0;width:auto;font-size:.85rem;text-align:left}
+  .hero-visual{flex-direction:column;height:auto}}
