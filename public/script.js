@@ -70,39 +70,41 @@ document.getElementById("chatForm").addEventListener("submit", async e => {
   log.scrollTop = log.scrollHeight;
 });
 
-// ---- Close / reopen chat popup ----
-(function () {
-  const SELECTOR = '#chat, .chat, .chat-box, .chat-widget, [id*="chat"], [class*="chat"]';
-  const panel = document.querySelector(SELECTOR);
-  if (!panel) return;
 
-  panel.classList.add('chat-closable');
+// ---- Close button inside chat window ----
+(function () {
+  const input = document.querySelector('input[placeholder*="charge" i], textarea[placeholder*="charge" i]');
+  if (!input) return;
+
+  // Walk up from the chat input to the floating chat window
+  let panel = input.parentElement;
+  while (panel && panel !== document.body && getComputedStyle(panel).position !== 'fixed') {
+    panel = panel.parentElement;
+  }
+  if (!panel || panel === document.body) return;
+
+  // The existing "Ask VoltRide" launcher button
+  const launcher = [...document.querySelectorAll('button, a')]
+    .find(el => !panel.contains(el) && /Ask VoltRide/i.test(el.textContent));
 
   const closeBtn = document.createElement('button');
-  closeBtn.className = 'chat-close';
+  closeBtn.type = 'button';
+  closeBtn.className = 'chat-x';
   closeBtn.setAttribute('aria-label', 'Close chat');
   closeBtn.innerHTML = '&times;';
   panel.appendChild(closeBtn);
 
-  const openBtn = document.createElement('button');
-  openBtn.className = 'chat-open';
-  openBtn.textContent = 'Chat with us';
-  document.body.appendChild(openBtn);
-
   function closeChat() {
-    panel.classList.add('chat-hidden');
-    openBtn.style.display = 'block';
-    sessionStorage.setItem('chatClosed', '1');
+    panel.style.display = 'none';
+    panel.classList.remove('open', 'active', 'show', 'visible');
+    if (launcher) launcher.style.display = '';
   }
   function openChat() {
-    panel.classList.remove('chat-hidden');
-    openBtn.style.display = 'none';
-    sessionStorage.removeItem('chatClosed');
+    panel.style.display = '';
+    panel.removeAttribute('hidden');
   }
 
-  closeBtn.addEventListener('click', closeChat);
-  openBtn.addEventListener('click', openChat);
+  closeBtn.addEventListener('click', e => { e.stopPropagation(); closeChat(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeChat(); });
-
-  sessionStorage.getItem('chatClosed') ? closeChat() : openChat();
+  if (launcher) launcher.addEventListener('click', openChat);
 })();
