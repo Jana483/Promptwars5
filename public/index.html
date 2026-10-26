@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoltRide X1 – Launch Event</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="logo">⚡ VoltRide</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#specs">Specs</a>
+      <a href="#network">Charging</a>
+      <a href="#event">Event</a>
+      <a href="#register" class="btn-sm">Register</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <p class="tag">Grand Launch • Media & Public Event</p>
+      <h1>VoltRide <span>X1</span></h1>
+      <p class="sub">The electric scooter that doesn't tip over, doesn't get punctures, and goes 380 km on one charge.</p>
+      <div class="countdown" id="countdown">
+        <div><span id="d">00</span><small>Days</small></div>
+        <div><span id="h">00</span><small>Hours</small></div>
+        <div><span id="m">00</span><small>Min</small></div>
+        <div><span id="s">00</span><small>Sec</small></div>
+      </div>
+      <a href="#register" class="btn">Reserve Your Seat</a>
+    </div>
+    <div class="hero-visual">
+      <div class="scooter-glow"></div>
+      <div class="scooter">🛵</div>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <h2>Built Different</h2>
+    <div class="grid">
+      <div class="card"><div class="icon">🛡️</div><h3>Anti-Fall Balance</h3><p>Self-balancing stability system keeps the scooter upright – no falls, even at standstill.</p></div>
+      <div class="card"><div class="icon">⚡</div><h3>30-Min Quick Charge</h3><p>Turbo charging mode gets you from low to full in just 30 minutes.</p></div>
+      <div class="card"><div class="icon">🛣️</div><h3>380 km Range</h3><p>Ride 380 kilometers on a single charge – city to city without worry.</p></div>
+      <div class="card"><div class="icon">🔋</div><h3>Auto-Charge +50 km</h3><p>Auto-charge adds up to 50 km of range on every charge.</p></div>
+      <div class="card"><div class="icon">🛞</div><h3>Puncture-Free Tyres</h3><p>Airless tyre technology – say goodbye to flat tyres forever.</p></div>
+      <div class="card"><div class="icon">🏅</div><h3>10-Year Full Warranty</h3><p>Complete coverage for a decade, with support anywhere, anytime.</p></div>
+    </div>
+  </section>
+
+  <section id="specs" class="section dark">
+    <h2>Specifications</h2>
+    <div class="specs">
+      <div><strong data-count="380">0</strong><span>km per charge</span></div>
+      <div><strong data-count="30">0</strong><span>min quick charge</span></div>
+      <div><strong data-count="50">0</strong><span>km auto-charge</span></div>
+      <div><strong data-count="10">0</strong><span>years warranty</span></div>
+    </div>
+  </section>
+
+  <section id="network" class="section">
+    <h2>Charging Every 50 km</h2>
+    <p class="center">A dedicated VoltRide charging point every 50 kilometers, plus 24/7 roadside support.</p>
+    <div class="road">
+      <div class="track"></div>
+      <div class="rider">🛵</div>
+      <div class="points">
+        <span>0 km</span><span>⚡50</span><span>⚡100</span><span>⚡150</span><span>⚡200</span><span>⚡250</span><span>⚡300</span><span>⚡350</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="event" class="section dark">
+    <h2>Launch Event</h2>
+    <div class="event-grid">
+      <div class="card"><h3>📅 Date</h3><p>15 November 2026 • 10:00 AM IST</p></div>
+      <div class="card"><h3>📍 Venue</h3><p>Hyderabad International Convention Centre</p></div>
+      <div class="card"><h3>🎤 Agenda</h3>
+        <ul>
+          <li>10:00 – Welcome & Press Check-in</li>
+          <li>10:30 – Product Unveiling</li>
+          <li>11:15 – Live Demo & Test Rides</li>
+          <li>12:00 – Media Q&A</li>
+          <li>12:30 – Public Experience Zone</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="register" class="section">
+    <h2>Register to Attend</h2>
+    <form id="regForm" class="form">
+      <input name="name" placeholder="Full name" required />
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="phone" placeholder="Phone" required />
+      <select name="type" id="type" required>
+        <option value="">I am attending as…</option>
+        <option value="public">General Public</option>
+        <option value="media">Media / Press</option>
+      </select>
+      <input name="organization" id="org" placeholder="Media organization" class="hidden" />
+      <label class="check"><input type="checkbox" name="testRide" /> I'd like a test ride</label>
+      <button class="btn" type="submit">Confirm Registration</button>
+      <p id="msg" class="msg"></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 VoltRide Mobility • Support 24/7: support@voltride.example</p>
+  </footer>
+
+  <button id="chatToggle" class="chat-btn">💬 Ask VoltRide</button>
+  <div id="chatBox" class="chat hidden">
+    <div class="chat-head">VoltRide Assistant • Powered by Gemini</div>
+    <div id="chatLog" class="chat-log"><div class="bot">Hi! Ask me anything about the VoltRide X1 or the launch event.</div></div>
+    <form id="chatForm"><input id="chatInput" placeholder="e.g. How fast does it charge?" /><button>Send</button></form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

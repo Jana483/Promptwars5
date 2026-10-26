@@ -1,0 +1,12 @@
+{
+  "name": "voltride-launch",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "@google-cloud/firestore": "^7.10.0",
+    "@google/genai": "^1.0.0",
+    "express": "^4.21.0"
+  }
+}
