@@ -40,7 +40,7 @@ app.post("/api/ask", async (req, res) => {
     res.json({ answer: r.text });
   } catch (e) {
     console.error(e);
-    res.status(500).json({ error: "Assistant unavailable" });
+    res.status(500).json({ error: "Thanks for reaching out! Our VoltRide assistant is taking a short break and will be available again soon. We will help you shortly. Meanwhile, you can email us at support@voltride.example." });
   }
 });
 
