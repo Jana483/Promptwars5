@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Celebration & Event Planner</title>
+<link rel="stylesheet" href="style.css">
+<style>
+ .pl-wrap{max-width:900px;margin:40px auto;padding:0 16px;color:#e8eefc;font-family:system-ui,sans-serif}
+ .pl-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+ .pl-form input,.pl-form select{padding:10px;border-radius:8px;border:1px solid #2a3550;background:#111a2e;color:#fff}
+ .pl-btn{grid-column:1/-1;padding:14px;border:none;border-radius:999px;background:linear-gradient(90deg,#00e5a0,#00b4ff);font-weight:700;cursor:pointer}
+ .pl-card{background:#111a2e;border:1px solid #2a3550;border-radius:14px;padding:18px;margin-top:18px}
+ .pl-card h3{margin-top:0;color:#00e5a0} table{width:100%;border-collapse:collapse} td{padding:6px;border-bottom:1px solid #2a3550}
+ .chip{display:inline-block;padding:4px 10px;border-radius:999px;margin:3px;background:#1d2a47}
+</style></head>
+<body><div class="pl-wrap">
+ <a href="/">&larr; Back to VoltRide launch (sample event)</a>
+ <h1>AI Celebration & Event Planner</h1>
+ <p>Tell us about your event. Gemini creates a budget, timeline, vendor checklist and personalized ideas.</p>
+ <form id="pf" class="pl-form">
+  <select name="eventType" required>
+   <option value="">Event type</option><option>Wedding</option><option>Birthday</option>
+   <option>Community event</option><option>Engagement</option><option>Anniversary</option><option>Product launch</option>
+  </select>
+  <input name="honoree" placeholder="For whom? e.g. Priya, 5 yrs">
+  <input name="city" placeholder="City e.g. Hyderabad">
+  <input name="date" type="date">
+  <input name="guests" type="number" min="1" placeholder="Guests e.g. 150">
+  <input name="budget" type="number" min="1000" placeholder="Budget in ₹ e.g. 300000">
+  <input name="theme" placeholder="Style/theme e.g. traditional, eco-friendly">
+  <input name="interests" placeholder="Interests e.g. cricket, music, space">
+  <input name="culture" placeholder="Traditions e.g. Telugu, Bathukamma">
+  <input name="dietary" placeholder="Dietary needs e.g. pure veg, Jain">
+  <button class="pl-btn" type="submit">Plan my event with AI</button>
+ </form>
+ <div id="out"></div>
+</div>
+<script>
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const inr=n=>'₹'+Number(n||0).toLocaleString('en-IN');
+const li=a=>(a||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+document.getElementById('pf').addEventListener('submit',async e=>{
+ e.preventDefault(); const out=document.getElementById('out');
+ out.innerHTML='<div class="pl-card">Planning your event...</div>';
+ try{
+  const r=await fetch('/api/plan',{method:'POST',headers:{'Content-Type':'application/json'},
+   body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});
+  const p=await r.json(); if(!r.ok) throw new Error(p.error);
+  const i=p.ideas||{};
+  out.innerHTML=`
+  <div class="pl-card"><h3>Summary</h3><p>${esc(p.summary)}</p><b>Estimated total: ${inr(p.totalEstimate)}</b></div>
+  <div class="pl-card"><h3>Budget</h3><table>${(p.budget||[]).map(b=>`<tr><td>${esc(b.category)}</td><td>${inr(b.amount)}</td><td>${esc(b.notes)}</td></tr>`).join('')}</table></div>
+  <div class="pl-card"><h3>Timeline</h3><ul>${(p.timeline||[]).map(t=>`<li><b>${esc(t.when)}:</b> ${esc(t.task)}</li>`).join('')}</ul></div>
+  <div class="pl-card"><h3>Vendor checklist</h3>${(p.vendors||[]).map(v=>`<p><label><input type="checkbox"> <b>${esc(v.vendor)}</b></label>: ${esc(v.why)}</p><ul>${li(v.questionsToAsk)}</ul>`).join('')}</div>
+  <div class="pl-card"><h3>Personalized ideas</h3><p><b>Theme:</b> ${esc(i.theme)}</p>
+   <p>${(i.colors||[]).map(c=>`<span class="chip">${esc(c)}</span>`).join('')}</p>
+   <b>Decor</b><ul>${li(i.decor)}</ul><b>Menu</b><ul>${li(i.food)}</ul>
+   <b>Activities</b><ul>${li(i.activities)}</ul><b>Personal touches</b><ul>${li(i.personalTouches)}</ul></div>
+  <div class="pl-card"><h3>Tips</h3><ul>${li(p.tips)}</ul></div>`;
+ }catch(err){out.innerHTML=`<div class="pl-card">${esc(err.message||'Something went wrong. Please try again.')}</div>`;}
+});
+</script></body></html>
